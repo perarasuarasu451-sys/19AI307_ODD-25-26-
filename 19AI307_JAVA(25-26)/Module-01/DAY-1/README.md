@@ -1,388 +1,357 @@
-# Ex.No:5(A) INPUTSTREAMREADER 
+# Ex.No:1(A) INTRODUCTION TO JAVA PROGRAMMING, DATA TYPES, VARIABLES AND OPERATORS
 
 ## QUESTION:
-Write a Java program to write characters to a file using FileWriter.
+Lovely has just started learning Java and is very excited about how to display messages on the screen. Her first mission is to understand how different types of print statements work:
 
+System.out.print() → prints on the same line
+
+System.out.println() → prints and moves to the next line
+
+System.out.printf() → prints formatted output
 
 
 ## AIM:
-To write a Java program that writes character data into a text file using the FileWriter class.
+To write a Java program that demonstrates the use of variables, data types, operators, and different print statements (print, println, and printf).
 
 ## ALGORITHM :
 1.	Start the program.
-2.	Import the necessary package 'java.util'
-3.	Create a FileWriter object and specify the filename.
-4. Write characters to the file using the write() method.
-5. Close the FileWriter to save the data.
-6. End the program.
-
-
-
+2.	Import the required package java.util.* (optional).
+3.	Declare variables of different data types (int, float, char, String).
+4.	Perform simple arithmetic operations using operators.
+5.	Use System.out.print() to display output on the same line.
+6.	Use System.out.println() to display output on the next line.
+7.	Use System.out.printf() to print formatted output.
+8.	End the program.
 
 ## PROGRAM:
  ```
 /*
-Program to implement a InputStreamReader using Java
-Developed by: THEJASHREE S
-RegisterNumber:212224240175
-*/
-```
-
-## SOURCE CODE:
-```
-import java.io.*;
-import java.util.Scanner;
-
-public class FileWriterExampleUserInput {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        try {
-            String fileName = sc.nextLine();
-            String content = sc.nextLine();
-            FileWriter fw = new FileWriter(fileName);
-            fw.write(content);
-            fw.close();
-
-            System.out.println("File written successfully.");
-        } catch (IOException e) {
-            System.out.println("Error writing to file: " + e.getMessage());
-        } finally {
-            sc.close();
-        }
-    }
-}
-```
-
-
-
-
-
-
-## OUTPUT:
-
-![java51](https://github.com/ABINAYA-27-76/19AI307_ODD-25-26-/blob/a9261fe7fb8a08b278b91f6a1a979055f59755dc/19AI307_JAVA(25-26)/Module-05/DAY-1/java51.png)
-
-## RESULT:
-Thus, the Java program to write characters to a file using FileWriter was successfully executed and verified.
-
-# Ex.No:5(B) SERIALIZATION AND DESERIALIZATION 
-
-## QUESTION:
-Write a Java program to read a string from the user, compress it in memory using ByteArrayOutputStream + GZIPOutputStream, and then decompress it back using ByteArrayInputStream + GZIPInputStream.
-
-
-## AIM:
-
-To write a Java program that reads a string from the user, compresses it using GZIP compression, and then decompresses it back to its original form.
-
-## ALGORITHM :
-1.	Start the program.
-2.	Import the necessary package 'java.util'
-3.	Read a string from the user using Scanner.
-4. Create a ByteArrayOutputStream object to hold compressed data.
-5. Wrap it with GZIPOutputStream and write the user string into it to perform compression.
-6. Convert compressed data into a byte array.
-7. Create a ByteArrayInputStream object using the compressed byte array.
-8. Wrap it with GZIPInputStream to decompress the content.
-9. Read decompressed bytes and convert them back into the original string.
-10. Display original, compressed size, and decompressed results.
-11. End the program.
-
-
-
-
-
-## PROGRAM:
- ```
-/*
-Program to implement a Serialization and Deserialization using Java
-Developed by: THEJASHREE S
-RegisterNumber:212224240175 
-*/
-```
-
-## SOURCE CODE:
-```
-import java.io.*;
-import java.util.Scanner;
-import java.util.zip.GZIPOutputStream;
-import java.util.zip.GZIPInputStream;
-
-public class GZIPMemoryExample {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        try {
-            String input = scanner.nextLine();
-
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            GZIPOutputStream gzipOut = new GZIPOutputStream(baos);
-            gzipOut.write(input.getBytes("UTF-8"));
-            gzipOut.close(); 
-
-            byte[] compressedData = baos.toByteArray();
-            System.out.println("Compressed data (bytes):");
-            for (byte b : compressedData) {
-                System.out.print(b + " ");
-            }
-            System.out.println("\nTotal bytes: " + compressedData.length);
-
-            ByteArrayInputStream bais = new ByteArrayInputStream(compressedData);
-            GZIPInputStream gzipIn = new GZIPInputStream(bais);
-            InputStreamReader reader = new InputStreamReader(gzipIn, "UTF-8");
-            BufferedReader br = new BufferedReader(reader);
-
-            StringBuilder decompressed = new StringBuilder();
-            String line;
-            while ((line = br.readLine()) != null) {
-                decompressed.append(line);
-            }
-
-            System.out.println("\nDecompressed string:");
-            System.out.println(decompressed.toString());
-
-            br.close();
-            gzipIn.close();
-            bais.close();
-
-        } catch (IOException e) {
-            System.out.println("Error: " + e.getMessage());
-        } finally {
-            scanner.close();
-        }
-    }
-}
-```
-
-
-
-
-
-
-## OUTPUT:
-![java52](https://github.com/ABINAYA-27-76/19AI307_ODD-25-26-/blob/4629176025934c52170b68fd2b511f5724754685/19AI307_JAVA(25-26)/Module-05/DAY-2/java52.png)
-
-
-## RESULT:
-Thus, the Java program to compress and decompress a string using ByteArrayOutputStream, GZIPOutputStream, ByteArrayInputStream, and GZIPInputStream was successfully implemented and executed.
-
-# Ex.No:5(C)  FILE HANDLING USING JAVA
-## QUESTION:
-Write a program to count the number of words in a file.
-
-
-
-## AIM:
-To write a Java program that reads a text file and counts the number of words present in the file using file handling mechanisms.
-
-## ALGORITHM :
-1.	Start the program.
-2.	Import the necessary package 'java.util'
-3.	Create a File object to reference the input text file.
-4. Use Scanner or FileReader to read the contents of the file.
-5. Split the file content into words using space or delimiter.
-6. Count the total number of words.
-7. Display the word count.
-8. End the program.
-
-
-
-
-
-## PROGRAM:
- ```
-/*
-Program to implement a File Handling using Java
-Developed by: THEJASHREE S
-RegisterNumber:212224240175
-*/
-```
-
-## SOURCE CODE:
-```
-import java.io.*;
-import java.util.*;
-
-public class WordCountInFile {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        try {
-            String content = sc.nextLine();
-            FileWriter fw = new FileWriter("input.txt");
-            fw.write(content);
-            fw.close();
-            BufferedReader br = new BufferedReader(new FileReader("input.txt"));
-            String line;
-            int wordCount = 0;
-            while ((line = br.readLine()) != null) {
-                String[] words = line.trim().split("\\s+");
-                if (!line.trim().isEmpty()) {
-                    wordCount += words.length;
-                }
-            }
-
-            br.close();
-            System.out.println("Number of words in the file: " + wordCount);
-
-        } catch (IOException e) {
-            System.out.println("Error: " + e.getMessage());
-        } finally {
-            sc.close();
-        }
-    }
-}
-```
-
-
-
-
-
-
-## OUTPUT:
-![java53](https://github.com/ABINAYA-27-76/19AI307_ODD-25-26-/blob/6117fd83efb67a2066ea2c15c1ee8c4e274b4538/19AI307_JAVA(25-26)/Module-05/DAY-3/java53.png)
-
-
-## RESULT:
-Thus, the Java program that counts the number of words in a file using file handling was successfully executed.
-
-# Ex.No:5(D) THREAD PRIORITY
-
-## QUESTION:
-Write a java program for set the priority and name of the current thread.Consider two threads t1 and t2
-
-## AIM:
-To write a Java program that demonstrates thread priority by creating two threads, assigning names and priorities to them, and displaying thread execution.
-
-## ALGORITHM :
-1.	Start the program.
-2.	Import the necessary package 'java.util'
-3.	Create a class that extends Thread.
-4. Override the run() method to print the current thread name and priority.
-5. Create two thread objects t1 and t2.
-6. Set names and priorities for each thread using setName() and setPriority().
-7. Start both threads.
-8. Display messages showing thread execution order.
-9. End the program.
-
-
-## PROGRAM:
- ```
-/*
-Program to implement a Thread Priority Concept using Java
+Program to implement variables and Operators using Java
 Developed by: PERARASU K
 RegisterNumber:212225100034
 */
 ```
 
-## SOURCE CODE:
+## Sourcecode.java:
 ```
 import java.util.*;
+public class Main
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        String name=sc.next();
+        int age=sc.nextInt();
+        double num=sc.nextDouble();
+        System.out.println("Hello, "+name);
+        System.out.println("You are "+age+" years old");
+        System.out.printf("Your favorite number is %.2f ",num);
+    }
+}
+```
 
-public class ThreadPriorityExample {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String name1 = sc.nextLine();
-        String name2 = sc.nextLine();
-        Thread t1 = new Thread();
-        Thread t2 = new Thread();
-        t1.setName(name1);
-        t2.setName(name2);
-        t1.setPriority(4);
-        t2.setPriority(2);
-        System.out.println(t1);
-        System.out.println(t2);
 
-        sc.close();
+
+
+
+## OUTPUT:
+<img width="766" height="385" alt="Screenshot 2025-11-14 105812" src="https://github.com/user-attachments/assets/8ca3a2e4-e913-4c3f-a8bf-73827075ab57" />
+
+
+## RESULT:
+Thus, the Java program demonstrating variables, data types, operators, and print statements was successfully executed.
+
+# Ex.No:1(B) CONDITIONAL STATEMENT
+
+## QUESTION:
+In a haunted house, lights turn on or off based on the hour of entry:
+
+If the hour is even and between 2 and 6 (inclusive), lights flicker.
+
+If the hour is odd and between 7 and 11, lights stay off.
+
+If the hour is 12, lights turn red.
+
+Otherwise, the house is dark.
+
+
+## AIM:
+To write a Java program that uses conditional statements to determine the state of lights in a haunted house based on the hour of entry.
+
+## ALGORITHM :
+1. Start the program.
+
+2. Import the necessary package java.util.*.
+
+3. Create a Scanner object to read the hour input from the user.
+
+4. Read the hour as an integer.
+
+5. Check if the hour is even and between 2 and 6 (inclusive):
+
+6. Display “Lights flicker”.
+
+7. Else if the hour is odd and between 7 and 11:
+
+8. Display “Lights stay off”.
+
+9. Else if the hour is 12:
+
+10. Display “Lights turn red”.
+ 
+11. Display “The house is dark”.
+
+12. End the program.
+
+## PROGRAM:
+ ```
+/*
+Program to implement a conditional statement using Java
+Developed by: THEJASHREE S
+RegisterNumber: 212224240175
+*/
+```
+
+## Sourcecode.java:
+```
+import java.util.*;
+public class Demo
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        int a=sc.nextInt();
+       if (a >= 2 && a <= 6 && a % 2 == 0) {
+            System.out.println("Lights flicker");
+        } else if (a>= 7 && a <= 11 && a % 2 != 0) {
+            System.out.println("Lights off");
+        } else if (a == 12) {
+            System.out.println("Lights red");
+        } else {
+            System.out.println("Dark house");
+        }
     }
 }
 ```
 
 ## OUTPUT:
+<img width="486" height="294" alt="Screenshot 2025-11-14 101547" src="https://github.com/user-attachments/assets/a64529b4-061c-436d-8ea4-55157b6e41b9" />
 
-![java54](https://github.com/ABINAYA-27-76/19AI307_ODD-25-26-/blob/7d952630fc35928069eb8db8971d42aa9400df96/19AI307_JAVA(25-26)/Module-05/DAY-4/java54.png)
+
+
 
 
 ## RESULT:
-Thus, the Java program that demonstrates thread naming and thread priority was successfully executed.
+Thus, the Java program to implement conditional statements for the haunted house lighting system was successfully executed.
 
-# Ex.No:5(E) MULTITHREADING -SYNCHRONIZATION
+# Ex.No:1(C) LOOPING STATEMENT
 
 ## QUESTION:
-
-Read N numbers from the user, use a fixed thread pool (size 3) to compute the sum of each number multiplied by 2. Return results in the same order.
-
+Construct a right-angled triangle star pattern using for loop.
 ## AIM:
-To write a Java program that uses a Fixed Thread Pool to process a set of numbers concurrently and demonstrates synchronization by maintaining the order of results.
+To write a Java program using looping statements to print a right-angled triangle star pattern based on user input.
 
 ## ALGORITHM :
-
 1.	Start the program.
+
 2.	Import the necessary package 'java.util'
-3.	Read total number of tasks (T) from the user.
-4. Read T numbers and store them in a list.
-5. Create a FixedThreadPool of size 3 using Executors.newFixedThreadPool(3).
-6. Submit tasks to multiply each number by 2 using Callable.
-7. Keep the Future objects returned from each task to retain order.
-8. Retrieve results using future.get() in the same order they were submitted.
-9. Display final results.
-10. Shutdown executor service.
-11. End the program.
 
+3. Read the number of rows from the user.
 
+4. Use an outer loop to iterate through each row.
 
+5. Use an inner loop to print stars (*) for each row.
+
+6. Move to the next line after printing stars for each row.
+
+7. End the program.
 
 
 ## PROGRAM:
  ```
 /*
-Program to implement a Synchronization concept using Java
+Program to implement a Looping Statement using Java
 Developed by: THEJASHREE S
-RegisterNumber:212224240175
+RegisterNumber: 212224240175
+*/
+```
+
+## SOURCE CODE:
+
+```
+import java.util.*;
+public class TrianglePattern
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        for (int i = 1; i <= n; i++) 
+        {         
+            for (int j = 1; j <= i; j++) 
+            {      
+                System.out.print("* ");
+            }
+            System.out.println();              
+        }
+    }
+}
+```
+
+
+
+
+## OUTPUT:
+<img width="399" height="395" alt="image" src="https://github.com/user-attachments/assets/07286d0c-5174-4702-8d58-34b630bd23d6" />
+
+
+
+## RESULT:
+Thus, the Java program using looping statements to print a right-angled triangle star pattern was successfully written, executed, and verified.
+
+# Ex.No:1(D) ARRAYS
+
+## QUESTION:
+Write a Java program to find the index of a given element in an array.
+
+## AIM:
+To write a Java program that finds the index position of a specified element from a given array.
+
+## ALGORITHM :
+1.	Start the program.
+2.	Import the necessary package 'java.util'
+3.	Read the size of the array from the user.
+4. Create an array of the given size.
+5. Read the array elements from the user and store them in the array.
+6. Read the element to be searched.
+7. Traverse the array and compare each element with the search element.
+8. If matched, print the index position and terminate.
+9. If not found, display "Element not found".
+10. Stop the program.
+
+## PROGRAM:
+ ```
+/*
+Program to implement a Array concept using Java
+Developed by: THEJASHREE S
+RegisterNumber: 212224240175 
 */
 ```
 
 ## SOURCE CODE:
 ```
 import java.util.*;
-import java.util.concurrent.*;
-
-public class FixedThreadPoolExample {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        
-        int T = sc.nextInt();
-        List<Integer> numbers = new ArrayList<>();
-        
-        for (int i = 0; i < T; i++) {
-            numbers.add(sc.nextInt());
+public class Main
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int[] arr=new int[n];
+        for(int i=0;i<n;i++)
+        {
+            arr[i]=sc.nextInt();
         }
-        ExecutorService executor = Executors.newFixedThreadPool(3);
-        List<Future<Integer>> results = new ArrayList<>();
-        for (int num : numbers) {
-            Future<Integer> result = executor.submit(() -> num * 2);
-            results.add(result);
-        }
-        for (Future<Integer> res : results) {
-            try {
-                System.out.println("Result: " + res.get());
-            } catch (Exception e) {
-                e.printStackTrace();
+        int key=sc.nextInt();
+        int index=-1;
+        for(int i=0;i<n;i++)
+        {
+            if(arr[i]==key)
+            {
+                index=i;
+                break;
             }
         }
-
-        executor.shutdown();
-        sc.close();
+        
+        if(index!=-1)
+        {
+            
+            System.out.println(index);
+        }
+        else{
+            System.out.println("Element not found");
+        }
     }
 }
 ```
 
+
+
+
+
+
+
 ## OUTPUT:
-![java55](https://github.com/ABINAYA-27-76/19AI307_ODD-25-26-/blob/c2055b9ef022dad36843a4845adf77e1cc993e4d/19AI307_JAVA(25-26)/Module-05/DAY-5/java55.png)
+![OUTPUT](https://github.com/ABINAYA-27-76/19AI307_ODD-25-26-/blob/89cca4a56df2cfb4774052b6ca0e2fe103f4875f/19AI307_JAVA(25-26)/Module-01/DAY-4/output.jpg)
+
+## RESULT:
+
+Thus, the Java program to find the index of a given element in an array was successfully executed.
+
+
+# Ex.No:1(E) STRINGS AND MATH FUNCTION
+
+## QUESTION:
+
+Write a Java program to calculate the power of a given number.
+
+
+## AIM:
+To write a Java program to compute the power of a number using the Math.pow() function in Java.
+
+## ALGORITHM :
+1.	Start the program.
+2.	Import the necessary package 'java.util'
+3.	Read the base value from the user.
+4. Read the exponent value from the user.
+5. Use the Math.pow(base, exponent) function to calculate the power.
+6. Display the result.
+7. Stop the program.
+
+## PROGRAM:
+ ```
+/*
+Program to implement a Strings and Math Function using Java
+Developed by: THEJASHREE S
+RegisterNumber: 212224240175
+*/
+```
+
+## SOURCE CODE:
+
+```
+import java.util.*;
+
+public class PowerCalculation {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        double base = sc.nextDouble();
+        double exponent = sc.nextDouble();
+        double result = Math.pow(base, exponent);
+
+        System.out.println(base + " raised to the power of " + exponent + " is: " + result);
+    }
+}
+
+```
+
+
+
+
+
+## OUTPUT:
+![Screenshot 2025-11-17 002442](https://github.com/ABINAYA-27-76/19AI307_ODD-25-26-/blob/48e3a0e8c1eaa81a22e732def7d6ac38d8c6d9ba/19AI307_JAVA(25-26)/Module-01/DAY-5/Screenshot%202025-11-17%20002442.png)
 
 
 ## RESULT:
-Thus, the Java program using multithreading with synchronization and a fixed thread pool to compute values and preserve output order was successfully implemented and executed.
+Thus, the Java program to calculate the power of a given number using Math function was successfully executed.
+
+
+
+
+
+
+
+
 
 
