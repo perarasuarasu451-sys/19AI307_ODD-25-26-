@@ -20,8 +20,8 @@ To write a Java program to demonstrate variable scope and the use of a construct
  ```
 /*
 Program to implement a Variable scope and Constructor using Java
-Developed by: THEJASHREE S
-RegisterNumber:212224240175
+Developed by: PERARASU K
+RegisterNumber:212225100034
 */
 ```
 
